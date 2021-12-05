@@ -1,0 +1,36 @@
+body{
+    background:#fcde67;
+    margin-top:30px;
+}
+.container{
+    text-align: center;
+}
+input{
+    outline:None;
+    height:50px;
+    width:250px;
+    border:2px solid black;
+    background:palevioletred;
+    color:white;
+    font-size: medium;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+button{
+    outline:none;
+    height:50px;
+    width:100px;
+    border:2px solid black;
+    border-radius: 5px;
+    color:#183a1d;
+    background:#5bccf6;
+    font-size: medium;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+p{
+    font-size: 30px;
+    margin:2 0 0 0;
+    cursor: pointer;
+    color:#800000;
+}
