@@ -1,15 +1,36 @@
-var getbyinput=document.getElementsByName('todo_input')[0];
-var getbybutton=document.getElementsByTagName('button')[0];
-var getbydiv=document.getElementsByClassName('todos')[0];
-var count=0
-getbybutton.addEventListener('click',function(){
-    var paragraph=document.createElement('p');
-    paragraph.setAttribute("key",count);
-    paragraph.innerHTML=getbyinput.value;
-    getbydiv.appendChild(paragraph);
-    getbyinput.value="";
-    paragraph.addEventListener('click',function(){
-        getbydiv.removeChild(paragraph);
-    })
-    count+=1
+var getbydiv=document.getElementById('container');
+var select=document.getElementById('todo');
+var completedtodotitles=[];
+var pendingtodotitles=[];
+
+fetch('https://jsonplaceholder.typicode.com/todos')
+.then(response => response.json())
+.then(data => {
+    for( var i=0;i<data.length;i++){
+        if(data[i].completed==false){
+            pendingtodotitles.push(data[i].title);
+        }else{
+            completedtodotitles.push(data[i].title);
+        }
+    }
+})
+
+
+select.addEventListener('change',function(){
+    var value1=select.value;
+    if(value1==="Completed"){
+        getbydiv.innerHTML="";
+        for(var i=0;i<completedtodotitles.length;i++){
+            var tag1=document.createElement('li');
+            tag1.innerHTML=completedtodotitles[i];
+            getbydiv.appendChild(tag1);
+        }
+    }else if(value1==="Pending"){
+        getbydiv.innerHTML="";
+        for(var i=0;i<pendingtodotitles.length;i++){
+            var tag1=document.createElement('li');
+            tag1.innerHTML=pendingtodotitles[i];
+            getbydiv.appendChild(tag1);
+        }
+    }
 })
